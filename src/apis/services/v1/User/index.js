@@ -5,9 +5,18 @@ const addUsers = async (data) => {
     const result = await User.AddUser(data);
     return result;
   } catch (error) {
-    console.log(error);
     return error;
   }
 };
 
-module.exports = { addUsers };
+const getCount = async (startingAge, endingAge) => {
+  try {
+    const result = await User.getRecordCount(startingAge, endingAge);
+    const [{ count }] = result;
+    return parseInt(count, 10);
+  } catch (error) {
+    return error;
+  }
+};
+
+module.exports = { addUsers, getCount };

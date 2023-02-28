@@ -6,9 +6,12 @@ class User extends Model {
   }
 
   static async AddUser(data) {
-    console.log(data);
     const result = await User.query().insert(data).returning('*');
-    console.log(result);
+    return result;
+  }
+
+  static async getRecordCount(startingAge, endingAge) {
+    const result = await User.query().whereBetween('age', [startingAge, endingAge]).count();
     return result;
   }
 }

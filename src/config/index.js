@@ -17,6 +17,8 @@ const SQL_DB_PORT = AccessEnv('SQL_DB_PORT', 5432);
 const SQL_DB_NAME = AccessEnv('SQL_DB_NAME');
 const SQL_DB_DIALECT = AccessEnv('SQL_DB_DIALECT');
 
+const url = AccessEnv('url', null);
+
 module.exports = {
   packageVersion: PACKAGE_VERSION,
   isTest: ENV === 'test',
@@ -56,4 +58,6 @@ module.exports = {
       tableName: 'knex_migrations',
     },
   },
+
+  url,
 };
